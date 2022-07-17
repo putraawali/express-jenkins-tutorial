@@ -1,6 +1,5 @@
-require("dotenv").config()
+
 const express = require("express");
-const PORT = process.env.PORT
 const app = express();
 const cors = require("cors");
 
@@ -11,4 +10,4 @@ app.get("/", (req, res) => {
     res.status(200).json({ message: "Edit OK" });
 });
 
-app.listen(PORT, () => console.log("Server running on port", PORT))
+module.exports = { app };
