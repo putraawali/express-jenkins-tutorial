@@ -8,7 +8,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get("/", (req, res) => {
-    res.status(200).json({ message: "OK" });
+    res.status(200).json({ message: "Edit OK" });
 });
 
 app.listen(PORT, () => console.log("Server running on port", PORT))
