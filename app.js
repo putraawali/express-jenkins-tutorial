@@ -7,7 +7,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get("/", (req, res) => {
-    res.status(200).json({ message: "Edit OK" });
+    res.status(200).json({ message: "Add Unit Test OK" });
 });
 
 module.exports = { app };
