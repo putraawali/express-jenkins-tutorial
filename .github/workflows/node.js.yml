@@ -8,10 +8,10 @@ on:
     branches: [ "development" ]
 
 jobs:
-  build:
-
+  run_test:
+  
     runs-on: ubuntu-latest
-
+    
     strategy:
       matrix:
         node-version: [16.x]
@@ -26,3 +26,12 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm test
+  
+  merge-to-master:
+    runs-on: ubuntu-latest
+    needs: run_test
+    # Depends to run_test job
+    if: ${{ needs.run_test.result == 'success' }}
+    # Condition where steps only executed when run_test job is success
+    steps:
+    - run: echo 'Jalan nih'
