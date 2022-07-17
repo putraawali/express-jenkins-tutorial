@@ -10,10 +10,10 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-
+  run_test:
+  
     runs-on: ubuntu-latest
-
+    
     strategy:
       matrix:
         node-version: [16.x]
@@ -28,3 +28,12 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm test
+  
+  merge-to-master:
+    runs-on: ubuntu-latest
+    needs: run_test
+    # Depends to which job
+    if: ${{ needs.run_test.result == 'success' }}
+    steps:
+    - run: echo 'Jalan nih'
+    
